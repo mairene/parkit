@@ -1,18 +1,18 @@
 # parkit (Work in progress)
 
 ###Initial specs:
-####Find current location on map (UI: 'relocate' button)
-####Check for current day/time
-####Returns 5 nearby streets and following info:
-####  - available spots
-####  - price range
-####  - times
-####  - recent crime stats
+- Find current location on map (UI: 'relocate' button)
+- Check for current day/time
+- Returns 5 nearby streets and following info:
+'''  - available spots
+'''  - price range
+'''  - times
+'''  - recent crime stats
 
 ###Data to find:
-####Available parking
-####  - parking meters (CSV, need dictionary for area/rate/time conversion)
-####  - private/public lots
+- Available parking
+''' - parking meters (CSV, need dictionary for area/rate/time conversion)
+'''  - private/public lots
 ####  - parking permit
 ####  - street sweeping
 ####  - tow away zones
