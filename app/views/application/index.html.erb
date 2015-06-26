@@ -24,10 +24,10 @@
             var pos = new google.maps.LatLng(position.coords.latitude,
                                              position.coords.longitude);
 
-            var infowindow = new google.maps.InfoWindow({
-              map: map,
+            var marker = new google.maps.Marker({
               position: pos,
-              content: 'Location found using HTML5.'
+              map: map,
+              title: 'Hello World!'
             });
 
             map.setCenter(pos);
