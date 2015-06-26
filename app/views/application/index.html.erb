@@ -24,6 +24,8 @@
             var pos = new google.maps.LatLng(position.coords.latitude,
                                              position.coords.longitude);
 
+            var contentString = 'Hi Irene!'
+
             var marker = new google.maps.Marker({
               position: pos,
               map: map,
@@ -32,7 +34,12 @@
               title: 'Hello World!'
             });
 
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+
             map.setCenter(pos);
+            infowindow.open(map, marker);
           }, function() {
             handleNoGeolocation(true);
           });
