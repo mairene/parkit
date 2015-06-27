@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
 
 rate_hash = { 'Area 1' => 3.50,
               'Area 2' => 3.00,
@@ -29,3 +23,16 @@ rate_hash = { 'Area 1' => 3.50,
               'PortMC2' => 0.50,
               'Tour Bus' => 9.00 #tour bus 9.00 for two hours
                }
+
+parking_meter_data = CSV.read('parking_meters.csv')[1..-1]
+parking_meter_data.each do |row|
+  row[15].delete!('(')
+  row[15].delete!(')')
+  row[15].delete!(',')
+  location = row[15].split
+  latitude = location[0]
+  longitude = location[1]
+
+  Restriction.create(lat: latitude, lng: longitude, street_number: row[10], street_name: row[11], rate: rate_hash[row[13]], parking_meter: true, enforcement_start_time: 9, enforcement_end_time: 18)
+
+end
