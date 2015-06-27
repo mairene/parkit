@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+rate_hash = { 'Area 1' => 3.50,
+              'Area 2' => 3.00,
+              'Area 3' => }
