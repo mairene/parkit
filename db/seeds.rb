@@ -34,6 +34,6 @@ parking_meter_data.each do |row|
   longitude = location[1].to_f
   street_num = row[10].to_i
 
-  Restriction.create(lat: latitude, lng: longitude, street_number: street_num, street_name: row[11], rate: rate_hash[row[13]], parking_meter: true)
+  Restriction.create(lat: latitude, lng: longitude, street_number: street_num, street_name: row[11], rate: rate_hash[row[13]], parking_meter: true, enforcement_start_time: '09:00', enforcement_end_time: '18:00')
 
 end
