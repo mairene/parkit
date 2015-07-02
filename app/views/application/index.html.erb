@@ -7,8 +7,22 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js">
     </script>
-    <script type="text/javascript">
+    <!-- RSVP -->
+    <script src="rsvp.min.js"></script>
 
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+
+    <!-- GeoFire -->
+    <script src="https://cdn.firebase.com/libs/geofire/3.2.2/geofire.min.js"></script>
+    <script type="text/javascript">
+      // Create a Firebase reference where GeoFire will store its information
+      var firebaseRef = new Firebase("https://glowing-fire-8585.firebaseio.com/");
+
+      // Create a GeoFire index
+      var geoFire = new GeoFire(firebaseRef);
+
+      // GoogleMaps API markers
       var map;
 
       function initialize() {
