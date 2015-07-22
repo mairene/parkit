@@ -18,6 +18,7 @@
     <script type="text/javascript">
 
       var map;
+      var pos;
 
       function initialize() {
         var mapOptions = {
@@ -29,8 +30,10 @@
         // Try HTML5 geolocation
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = new google.maps.LatLng(position.coords.latitude,
+            pos = new google.maps.LatLng(position.coords.latitude,
                                              position.coords.longitude);
+
+            console.log(pos['A'])
 
             var contentString = 'You are here.'
 
@@ -52,6 +55,22 @@
             var restrictionFireBaseRef = new Firebase("https://glowing-fire-8585.firebaseio.com/");
 
             var geofire = new GeoFire(restrictionFireBaseRef);
+
+            // var geoQuery = geofire.query( {
+            //   center: pos,
+            //   radius: 10.5
+            // });
+
+            // var onReady = geoQuery.on("ready", function() {
+            //   console.log("Hi!!!!")
+            //   var newMarker = new google.maps.Marker({
+            //     position: [37.7885922016, -122.4056137984],
+            //     map: map,
+            //     draggable: true,
+            //     animation: google.maps.Animation.DROP,
+            //     title: 'Meter'
+            //   });
+            // })
           }, function() {
             handleNoGeolocation(true);
           });
@@ -61,15 +80,17 @@
         }
       }
 
-      function restrictionLocation() {
-        var marker = new google.maps.Marker({
-              position: pos,
-              map: map,
-              draggable: true,
-              animation: google.maps.Animation.DROP,
-              title: 'Restriction'
-            });
-      }
+      // function restrictionLocation() {
+
+
+      //   var marker = new google.maps.Marker({
+      //         position: pos,
+      //         map: map,
+      //         draggable: true,
+      //         animation: google.maps.Animation.DROP,
+      //         title: 'Restriction'
+      //       });
+      // }
 
       function handleNoGeolocation(errorFlag) {
         if (errorFlag) {
