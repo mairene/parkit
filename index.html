@@ -56,21 +56,23 @@
 
             var geofire = new GeoFire(restrictionFireBaseRef);
 
-            // var geoQuery = geofire.query( {
-            //   center: pos,
-            //   radius: 10.5
-            // });
+            var geoQuery = geofire.query( {
+              center: [pos['A'],pos['F']],
+              radius: 10.5
+            });
 
-            // var onReady = geoQuery.on("ready", function() {
-            //   console.log("Hi!!!!")
-            //   var newMarker = new google.maps.Marker({
-            //     position: [37.7885922016, -122.4056137984],
-            //     map: map,
-            //     draggable: true,
-            //     animation: google.maps.Animation.DROP,
-            //     title: 'Meter'
-            //   });
-            // })
+            var onReady = geoQuery.on("ready", function() {
+              console.log(geofire);
+              console.log(geoQuery);
+              console.log("Hi!!!!");
+              var newMarker = new google.maps.Marker({
+                position: geoQuery.center(),
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                title: 'Meter'
+              });
+            })
           }, function() {
             handleNoGeolocation(true);
           });
@@ -79,18 +81,6 @@
           handleNoGeolocation(false);
         }
       }
-
-      // function restrictionLocation() {
-
-
-      //   var marker = new google.maps.Marker({
-      //         position: pos,
-      //         map: map,
-      //         draggable: true,
-      //         animation: google.maps.Animation.DROP,
-      //         title: 'Restriction'
-      //       });
-      // }
 
       function handleNoGeolocation(errorFlag) {
         if (errorFlag) {
